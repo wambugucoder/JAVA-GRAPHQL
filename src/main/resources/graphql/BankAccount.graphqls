@@ -1,0 +1,11 @@
+# Bank Account Type
+type BankAccount {
+    id:ID!,
+    clientName:Client!,
+    currency:Currency!
+}
+
+enum Currency {
+    KSH,
+    USD
+}

@@ -1,0 +1,6 @@
+# All Queries will be displayed here
+type Query{
+    bankAccount(id:ID):BankAccount
+}
+
+
