@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: GRAPHQL-SPRINGBOOT
+
+graphql:
+  servlet:
+    max-query-depth: 100
+  playground:
+    #enabled: false
+    headers:
+      Authorization: Bearer Token
+    tabs:
+      - name: Bank Account Graphql
+        query: classpath:playground/bank_account.graphql
+        variables: classpath:playground/bank_account_variables.json

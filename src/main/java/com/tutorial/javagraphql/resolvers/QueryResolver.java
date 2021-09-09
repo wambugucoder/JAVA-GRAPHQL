@@ -21,7 +21,7 @@ public class QueryResolver implements GraphQLQueryResolver {
         List<String> list=new ArrayList<String>();
         list.add("kkdd");
         list.add("dadadad");
-        var clientB = Client.builder().id(UUID.randomUUID()).firstname("abc").lastname("jssa").middlename(list).build();
+        var clientB = Client.builder().id(id).firstname("abc").lastname("jssa").middlename(list).build();
         var clientA= Client.builder().id(UUID.randomUUID()).firstname("def").lastname("sada").middlename(list).build();
         clientA.setClient(clientB);
         clientB.setClient(clientA);
