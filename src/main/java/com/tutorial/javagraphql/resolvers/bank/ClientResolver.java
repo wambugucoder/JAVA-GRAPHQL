@@ -29,7 +29,7 @@ public class ClientResolver implements GraphQLResolver<BankAccount> {
                         .lastname("Wambugu")
                         .middlename(list)
                         .build())
-                .error(new GenericGraphQLError("Could not get sub client id"))
+               // .error(new GenericGraphQLError("Could not get sub client id"))
                 .build();
 
 

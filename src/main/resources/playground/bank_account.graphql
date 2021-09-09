@@ -7,3 +7,14 @@ query GET_BANK_ACCOUNT($id:ID){
 
     }
 }
+
+mutation CREATE_BANK_ACCOUNT($firstname:String!){
+    createBankAccount(input:{
+        firstname:$firstname
+    }){
+        id
+        clientName{
+            lastname
+        }
+    }
+}
