@@ -5,6 +5,7 @@ spring:
 graphql:
   servlet:
     max-query-depth: 100
+    exception-handlers-enabled: true
   playground:
     #enabled: false
     headers:
