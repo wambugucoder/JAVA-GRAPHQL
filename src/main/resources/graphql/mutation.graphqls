@@ -1,3 +1,4 @@
 type Mutation{
     createBankAccount(input: BankAccountInput!):BankAccount!
+    upload:ID
 }
