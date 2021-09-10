@@ -1,4 +1,9 @@
+#query->{ "query": "mutation($avatar:Upload!){uploadAvatar(avatar:$avatar)}", "variables":{"avatar":null} }
+#map->{"avatar1":["variables.avatar"]}
+#avatar1->avatar.png
+
 type Mutation{
     createBankAccount(input: BankAccountInput!):BankAccount!
     upload:ID
+    uploadAvatar(avatar:Upload!):String
 }

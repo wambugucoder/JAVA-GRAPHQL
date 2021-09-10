@@ -1,4 +1,6 @@
 # Bank Account Type
+scalar Upload
+
 type BankAccount {
     id:ID!,
     clientName:Client!,

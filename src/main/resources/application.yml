@@ -1,16 +1,25 @@
 spring:
   application:
     name: GRAPHQL-SPRINGBOOT
+  servlet:
+    multipart:
+      max-request-size: -1
+      max-file-size: -1
+
+
 
 graphql:
   servlet:
     max-query-depth: 100
     exception-handlers-enabled: true
   playground:
-    #enabled: false
+    enabled: true
     headers:
       Authorization: Bearer Token
     tabs:
       - name: Bank Account Graphql
         query: classpath:playground/bank_account.graphql
         variables: classpath:playground/bank_account_variables.json
+server:
+  tomcat:
+    max-swallow-size: -1
