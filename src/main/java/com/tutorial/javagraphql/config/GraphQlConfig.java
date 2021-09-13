@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import graphql.kickstart.servlet.apollo.ApolloScalars;
+import graphql.scalars.ExtendedScalars;
 import graphql.schema.GraphQLScalarType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,18 @@ public class GraphQlConfig {
     @Bean
     public GraphQLScalarType uploadScalar(){
         return ApolloScalars.Upload;
+    }
+    @Bean
+    public GraphQLScalarType nonNegativeInteger(){
+        return ExtendedScalars.NonNegativeInt;
+    }
+    @Bean
+    public GraphQLScalarType dateTime(){
+        return ExtendedScalars.DateTime;
+    }
+    @Bean
+    public GraphQLScalarType date(){
+        return ExtendedScalars.Date;
     }
     @Bean
     public ObjectMapper objectMapper() {

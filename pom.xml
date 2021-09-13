@@ -58,6 +58,12 @@
             <artifactId>playground-spring-boot-starter</artifactId>
             <version>5.10.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.graphql-java/graphql-java-extended-scalars -->
+        <dependency>
+            <groupId>com.graphql-java</groupId>
+            <artifactId>graphql-java-extended-scalars</artifactId>
+            <version>2021-08-15T23-45-48-a9f6ec6</version>
+        </dependency>
         <dependency>
             <groupId>com.graphql-java-kickstart</groupId>
             <artifactId>voyager-spring-boot-starter</artifactId>

@@ -2,6 +2,7 @@
 #map->{"avatar1":["variables.avatar"]}
 #avatar1->avatar.png
 
+
 type Mutation{
     createBankAccount(input: BankAccountInput!):BankAccount!
     upload:ID

@@ -3,8 +3,11 @@ scalar Upload
 
 type BankAccount {
     id:ID!,
-    clientName:Client!,
+    clientName:Client!
     currency:Currency!
+    createdOn:Date
+    createdAt: DateTime
+
 }
 
 enum Currency {

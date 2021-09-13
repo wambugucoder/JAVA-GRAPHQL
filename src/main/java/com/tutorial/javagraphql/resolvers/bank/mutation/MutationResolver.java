@@ -8,18 +8,28 @@ import graphql.execution.DataFetcherResult;
 import graphql.kickstart.servlet.context.DefaultGraphQLServletContext;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import graphql.schema.DataFetchingEnvironment;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.Part;
+import java.time.Clock;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.UUID;
 
 @Component
 @Slf4j
+@RequiredArgsConstructor
 public class MutationResolver implements GraphQLMutationResolver {
+    private final Clock clock;
+
     public BankAccount createBankAccount(BankAccountInput input){
-        return BankAccount.builder().id(UUID.randomUUID()).currency(Currency.USD).build();
+        return BankAccount.builder().id(UUID.randomUUID()).currency(Currency.USD)
+                .createdAt(ZonedDateTime.now(clock))
+                .createdOn(LocalDate.now(clock))
+                .build();
 
 
     }
