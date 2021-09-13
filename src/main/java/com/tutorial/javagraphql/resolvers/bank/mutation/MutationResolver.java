@@ -12,8 +12,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 
 import javax.servlet.http.Part;
+import javax.validation.Valid;
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
@@ -22,10 +24,11 @@ import java.util.UUID;
 @Component
 @Slf4j
 @RequiredArgsConstructor
+@Validated
 public class MutationResolver implements GraphQLMutationResolver {
     private final Clock clock;
 
-    public BankAccount createBankAccount(BankAccountInput input){
+    public BankAccount createBankAccount(@Valid BankAccountInput input){
         return BankAccount.builder().id(UUID.randomUUID()).currency(Currency.USD)
                 .createdAt(ZonedDateTime.now(clock))
                 .createdOn(LocalDate.now(clock))
