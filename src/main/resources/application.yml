@@ -16,6 +16,7 @@ graphql:
     enabled: true
     headers:
       Authorization: Bearer Token
+      user_id: jos
     tabs:
       - name: Bank Account Graphql
         query: classpath:playground/bank_account.graphql

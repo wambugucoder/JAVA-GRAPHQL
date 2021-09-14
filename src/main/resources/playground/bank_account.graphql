@@ -7,6 +7,21 @@ query GET_BANK_ACCOUNT($id:ID){
 
     }
 }
+query GET_BANK_ACCOUNTS($total:Int!){
+    getAllBankAccounts(first:$total){
+        edges{
+            cursor
+            node{
+                id
+                clientName{
+                    firstname
+                }
+                balance
+            }
+        }
+
+    }
+}
 
 mutation CREATE_BANK_ACCOUNT($firstname:String!){
     createBankAccount(input:{

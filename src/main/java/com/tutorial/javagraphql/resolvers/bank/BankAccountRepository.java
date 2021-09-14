@@ -17,11 +17,7 @@ public class BankAccountRepository {
 
     private final List<BankAccount> bankAccounts = new ArrayList<>();
     public List<BankAccount> listBankAccounts(){
-        bankAccounts.add(BankAccount.builder()
-                .id(fromString("c6aa269a-812b-49d5-b178-a739a1ed74cc"))
-                .currency(Currency.USD)
-                .createdAt(ZonedDateTime.parse("2019-05-03T12:12:00+00:00"))
-                .build());
+
         bankAccounts.add(BankAccount.builder()
                 .id(fromString("c6aa269a-812b-49d5-b178-a739a1ed74cd"))
                 .currency(Currency.USD)
