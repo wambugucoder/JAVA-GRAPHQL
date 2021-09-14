@@ -1,8 +1,8 @@
 package com.tutorial.javagraphql.resolvers.bank.query;
 
 import com.tutorial.javagraphql.connection.CursorUtil;
+import com.tutorial.javagraphql.context.CustomContext;
 import com.tutorial.javagraphql.model.BankAccount;
-import com.tutorial.javagraphql.model.Client;
 import com.tutorial.javagraphql.model.Currency;
 import com.tutorial.javagraphql.resolvers.bank.BankAccountRepository;
 import graphql.kickstart.tools.GraphQLQueryResolver;
@@ -13,8 +13,6 @@ import lombok.extern.slf4j.Slf4j;
 import lombok.var;
 import org.jetbrains.annotations.Nullable;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -34,6 +32,11 @@ public class QueryResolver implements GraphQLQueryResolver {
       }
 
         log.info("Account created with id:" +id);
+
+        CustomContext context= environment.getContext();
+        log.info("User id is {}",context.getUserId());
+
+
 
        return BankAccount.builder().id(id).currency(Currency.USD).build();
 

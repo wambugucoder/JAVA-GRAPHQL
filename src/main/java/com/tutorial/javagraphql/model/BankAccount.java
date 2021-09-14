@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.Value;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.UUID;
@@ -19,5 +20,6 @@ public class BankAccount implements Serializable {
     Client clientName;
     ZonedDateTime createdAt;
     LocalDate createdOn;
+    BigDecimal balance;
 
 }
