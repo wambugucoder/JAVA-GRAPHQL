@@ -1,6 +1,7 @@
 package com.tutorial.javagraphql.context.dataloaders;
 
 import com.tutorial.javagraphql.resolvers.bank.service.BalanceService;
+import com.tutorial.javagraphql.util.CorrelationIdPropagation;
 import lombok.RequiredArgsConstructor;
 import org.dataloader.DataLoader;
 import org.dataloader.DataLoaderRegistry;
@@ -18,7 +19,8 @@ import java.util.concurrent.Executors;
 public class DataLoaderRegistryFactory {
     private final BalanceService balanceService;
     public static  final String BALANCE_DATA_LOADER="BALANCE_DATA_LOADER";
-    private static final Executor balanceToThreadPool= Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+    private static final Executor balanceToThreadPool= CorrelationIdPropagation.wrap(Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors()));
+
 
     public DataLoaderRegistry create(String id){
         DataLoaderRegistry registry= new DataLoaderRegistry();

@@ -12,6 +12,7 @@ graphql:
   servlet:
     max-query-depth: 100
     exception-handlers-enabled: true
+    tracing-enabled: true
   playground:
     enabled: true
     headers:
@@ -24,3 +25,7 @@ graphql:
 server:
   tomcat:
     max-swallow-size: -1
+
+logging:
+  pattern:
+    console: -%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID:}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %clr(%X{correlation_id}){red} %m%n%wEx

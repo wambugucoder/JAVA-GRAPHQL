@@ -2,6 +2,7 @@ package com.tutorial.javagraphql.resolvers.bank;
 
 import com.tutorial.javagraphql.model.BankAccount;
 import com.tutorial.javagraphql.model.Client;
+import com.tutorial.javagraphql.util.CorrelationIdPropagation;
 import graphql.GraphQLException;
 import graphql.execution.DataFetcherResult;
 import graphql.kickstart.execution.error.GenericGraphQLError;
@@ -13,11 +14,14 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 @Slf4j
 @Component
 public class ClientResolver implements GraphQLResolver<BankAccount> {
-
+    private static final Executor balanceToThreadPool= CorrelationIdPropagation.wrap(Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors()));
+    
     public DataFetcherResult<Client> clientName(BankAccount bankAccount){
         log.info("Client created with an account:"+bankAccount.getId());
         List<String> list =new ArrayList<String>();
