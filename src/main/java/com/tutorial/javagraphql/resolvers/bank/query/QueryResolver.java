@@ -49,7 +49,7 @@ public class QueryResolver implements GraphQLQueryResolver {
        return BankAccount.builder().id(id).currency(Currency.USD).createdOn(LocalDate.now(clock)).createdAt(ZonedDateTime.now(clock)).build();
 
     }
-    @PreAuthorize("hasRole('ROLE_SUPERADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Connection<BankAccount> getAllBankAccounts(int first, @Nullable String cursor){
         int actualSize=bankAccountRepository.getBankAccounts().size();
         int size= Math.min(first, actualSize);

@@ -3,8 +3,8 @@ spring:
     name: GRAPHQL-SPRINGBOOT
   servlet:
     multipart:
-      max-request-size: -1
-      max-file-size: -1
+      max-request-size: 10MB
+      max-file-size: 10MB
 
 
 
@@ -22,9 +22,7 @@ graphql:
       - name: Bank Account Graphql
         query: classpath:playground/bank_account.graphql
         variables: classpath:playground/bank_account_variables.json
-server:
-  tomcat:
-    max-swallow-size: -1
+
 
 logging:
   pattern:

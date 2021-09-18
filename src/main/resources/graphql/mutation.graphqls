@@ -1,10 +1,11 @@
 #query->{ "query": "mutation($avatar:Upload!){uploadAvatar(avatar:$avatar)}", "variables":{"avatar":null} }
 #map->{"avatar1":["variables.avatar"]}
 #avatar1->avatar.png
-
+directive @NotBlank on ARGUMENT_DEFINITION| FIELD_DEFINITION
 
 type Mutation{
     createBankAccount(input: BankAccountInput!):BankAccount!
-    upload:ID
+    upload:ID!
+    updateBank(id:ID, name:String! @NotBlank, age:Int):BankAccount!
     uploadAvatar(avatar:Upload!):String
 }

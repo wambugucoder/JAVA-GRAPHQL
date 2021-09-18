@@ -3,6 +3,7 @@ package com.tutorial.javagraphql.resolvers.bank.mutation;
 import com.tutorial.javagraphql.exceptions.CustomException;
 import com.tutorial.javagraphql.model.BankAccount;
 import com.tutorial.javagraphql.model.Currency;
+import com.tutorial.javagraphql.publisher.BankAccountPublisher;
 import com.tutorial.javagraphql.request.BankAccountInput;
 import graphql.execution.DataFetcherResult;
 import graphql.kickstart.servlet.context.DefaultGraphQLServletContext;
@@ -27,8 +28,19 @@ import java.util.UUID;
 @Validated
 public class MutationResolver implements GraphQLMutationResolver {
     private final Clock clock;
+    private final BankAccountPublisher publisher;
 
     public BankAccount createBankAccount(@Valid BankAccountInput input){
+        BankAccount bankAccount= BankAccount.builder().id(UUID.randomUUID()).currency(Currency.USD)
+                .createdAt(ZonedDateTime.now(clock))
+                .createdOn(LocalDate.now(clock))
+                .build();
+        publisher.publish(bankAccount);
+        return bankAccount;
+
+    }
+    public BankAccount updateBank(UUID id,String name,int age){
+        log.info("Updating Bank with ID {}, name {} and Age {}",id,name,age);
         return BankAccount.builder().id(UUID.randomUUID()).currency(Currency.USD)
                 .createdAt(ZonedDateTime.now(clock))
                 .createdOn(LocalDate.now(clock))
@@ -44,7 +56,7 @@ public class MutationResolver implements GraphQLMutationResolver {
         return UUID.randomUUID();
     }
     public DataFetcherResult<String> uploadAvatar(Part avatar, DataFetchingEnvironment environment){
-         int maxUploadSizeInMb = 1 * 1024 * 1024;
+         int maxUploadSizeInMb = 1024 * 1024;
         Part actualAvatar = environment.getArgument("avatar");
         if (actualAvatar.getSize()>maxUploadSizeInMb){
             return DataFetcherResult.<String>newResult().data(null).error( new CustomException(404,"File Too Large")).build();

@@ -35,7 +35,7 @@ public class RequestLoggingInstrumentation extends SimpleInstrumentation {
                 log.info("Execution  completed successfully within {}", Duration.between(startTime,Instant.now(clock)));
             }
             else {
-                log.info("Execution  encountered errors");
+                log.info("Execution  encountered errors {}",Throwable.toString());
             }
             MDC.clear();
         });

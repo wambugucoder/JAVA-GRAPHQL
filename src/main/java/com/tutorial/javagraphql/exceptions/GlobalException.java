@@ -10,7 +10,7 @@ import javax.validation.ConstraintViolationException;
 @Component
 public class GlobalException {
 
-    @ExceptionHandler(ConstraintViolationException.class)
+    @ExceptionHandler({ConstraintViolationException.class,RuntimeException.class})
     public ThrowableGraphQLError getAllErrors(Exception e){
         return new ThrowableGraphQLError(e);
     }

@@ -3,6 +3,7 @@ package com.tutorial.javagraphql.context;
 import com.tutorial.javagraphql.context.dataloaders.DataLoaderRegistryFactory;
 import graphql.kickstart.execution.context.GraphQLContext;
 import graphql.kickstart.servlet.context.DefaultGraphQLServletContext;
+import graphql.kickstart.servlet.context.DefaultGraphQLWebSocketContext;
 import graphql.kickstart.servlet.context.GraphQLServletContextBuilder;
 import lombok.RequiredArgsConstructor;
 import lombok.var;
@@ -32,7 +33,10 @@ public class CustomContextBuilder implements GraphQLServletContextBuilder {
 
     @Override
     public GraphQLContext build(Session session, HandshakeRequest handshakeRequest) {
-        throw new IllegalStateException("Unsupported Yet");
+       return  DefaultGraphQLWebSocketContext.createWebSocketContext()
+               .with(session)
+               .with(handshakeRequest)
+               .build();
     }
 
     /**
